@@ -1,0 +1,110 @@
+root = true
+
+# ===========================================================
+#  Base settings
+# ===========================================================
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# ===========================================================
+#  C# general code style (.NET 8 / C# 12)
+# ===========================================================
+[*.cs]
+
+# --- Using directives ---
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = true
+
+# --- Accessibility & type qualification ---
+dotnet_style_require_accessibility_modifiers = always:warning
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion
+
+# --- Type usage ---
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+# ===========================================================
+#  Expression-bodied members (prefer single-line expressions)
+# ===========================================================
+csharp_style_expression_bodied_constructors = when_on_single_line:warning
+csharp_style_expression_bodied_methods = when_on_single_line:warning
+csharp_style_expression_bodied_properties = true:warning
+csharp_style_expression_bodied_accessors = true:warning
+csharp_style_expression_bodied_indexers = true:warning
+csharp_style_expression_bodied_operators = true:warning
+csharp_style_expression_bodied_lambdas = true:suggestion
+csharp_preserve_single_line_statements = false
+csharp_preserve_single_line_blocks = false
+
+# ===========================================================
+#  Primary constructors (C# 12)
+# ===========================================================
+csharp_style_prefer_primary_constructors = true:warning
+
+# ===========================================================
+#  Null and pattern preferences
+# ===========================================================
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_null_propagation = true:suggestion
+csharp_style_prefer_pattern_matching = true:suggestion
+csharp_style_prefer_switch_expression = true:suggestion
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
+
+# ===========================================================
+#  Namespace style
+# ===========================================================
+csharp_style_namespace_declarations = file_scoped:warning
+
+# ===========================================================
+#  Structs, readonly, etc.
+# ===========================================================
+csharp_style_prefer_readonly_struct = true:warning
+csharp_style_prefer_static_local_function = true:warning
+
+# ===========================================================
+#  Documentation
+# ===========================================================
+dotnet_style_require_documentation_comments = warning
+# Requer que todos os elementos públicos tenham XML docs
+dotnet_diagnostic.CS1591.severity = warning   # Missing XML comment for publicly visible type or member
+
+# ===========================================================
+#  Formatting preferences
+# ===========================================================
+csharp_new_line_before_open_brace = all
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_after_cast = false
+
+# ===========================================================
+#  Naming conventions (private fields with underscore)
+# ===========================================================
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_fields.required_modifiers = readonly
+
+dotnet_naming_style.underscore_prefix.required_prefix = _
+dotnet_naming_style.underscore_prefix.capitalization = camel_case
+
+dotnet_naming_rule.private_fields_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore.style = underscore_prefix
+dotnet_naming_rule.private_fields_underscore.severity = suggestion
+
+# ===========================================================
+#  File types
+# ===========================================================
+[*.{json,xml,csproj,props,targets}]
+indent_size = 2
+indent_style = space
