@@ -50,9 +50,6 @@ src/shared/
 ├── Messaging/            # Mensageria (Kafka)
 │   ├── Commands/         # Command messages
 │   ├── Events/           # Event messages
-│   └── Kafka/           # Implementações Kafka
-│       ├── Configuration/
-│       └── Services/
 │
 └── Security/            # Segurança e autenticação
     ├── Extensions/      # Extensions para JWT/Auth
