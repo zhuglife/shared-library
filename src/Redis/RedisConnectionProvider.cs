@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 using StackExchange.Redis;
@@ -7,15 +8,16 @@ public class RedisConnectionProvider : IConnectionProvider
 {
     private readonly IConnectionMultiplexer _connection;
     private readonly ILogger<RedisConnectionProvider> _logger;
+   
     private bool _disposed;
 
     public bool IsConnected => _connection?.IsConnected ?? false;
 
-    public RedisConnectionProvider(string connectionString, ILogger<RedisConnectionProvider> logger)
+    public RedisConnectionProvider(IConfiguration configuration, ILogger<RedisConnectionProvider> logger)
     {
         _logger = logger;
 
-        var options = ConfigurationOptions.Parse(connectionString);
+        var options = ConfigurationOptions.Parse(configuration["Redis:ConnectionString"]!);
         options.AbortOnConnectFail = false;
         options.ConnectRetry = 3;
         options.ConnectTimeout = 5000;
