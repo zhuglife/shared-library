@@ -37,7 +37,6 @@ src/shared/
 │   ├── Exceptions/          # Exceções customizadas
 │   ├── Extensions/          # Extension methods
 │   ├── Models/             # Modelos compartilhados
-│   └── Validators/         # Validadores FluentValidation
 │
 ├── HealthChecks/           # Health checks customizados
 │   ├── Checks/            # Implementações de checks

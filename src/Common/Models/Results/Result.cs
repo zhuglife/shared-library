@@ -40,6 +40,19 @@ public class Result
     public static Result Failure(string error) => new(false, error);
 
     public static Result Failure(List<string> errors) => new(false, errors);
+    public ErrorDetails ToErrorDetails(int statusCode = 400, string? traceId = null)
+    {
+        return new ErrorDetails
+        {
+            StatusCode = statusCode,
+            Message = Error,
+            Details = Errors.Any() ? string.Join("; ", Errors) : null,
+            TraceId = traceId,
+            Errors = Errors.Any()
+                ? new Dictionary<string, string[]> { ["errors"] = Errors.ToArray() }
+                : null
+        };
+    }
 }
 
 /// <summary>
